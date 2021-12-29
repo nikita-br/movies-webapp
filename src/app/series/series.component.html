@@ -1,0 +1,56 @@
+<kendo-tilelayout [columns]="3">
+
+  <kendo-tilelayout-item [col]="1" [rowSpan]="1">
+    <kendo-tilelayout-item-body>
+      <p>
+        <kendo-dropdownlist (valueChange)="handleSeriesChange($event)" [(ngModel)]="selectedTitle" [data]="categories" [defaultItem]="defaultTitleItem" textField="text" valueField="value">
+        </kendo-dropdownlist>
+      </p>
+      <p>
+        <kendo-dropdownlist (valueChange)="handleSeasonChange($event)" [(ngModel)]="selectedSeason" [data]="seasons" [defaultItem]="defaultSeasonItem" textField="text" valueField="value">
+        </kendo-dropdownlist>
+      </p>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+
+  <kendo-tilelayout-item [colSpan]="2" [col]="2" [rowSpan]="1">
+    <kendo-tilelayout-item-body>
+      <div *ngIf="movie">
+        <div style="float: left;width: 80%" w>
+          <h1>{{movie.title}}</h1>
+          <ul>
+            <li>
+              {{movie.plot}}
+            </li>
+            <li>
+              {{movie.actors}}
+            </li>
+            <li>
+              {{movie.genre}}
+            </li>
+            <li>
+              {{movie.year}}
+            </li>
+            <li>
+              {{movie.totalSeasons}} Seasons
+            </li>
+
+          </ul>
+        </div>
+        <img [src]=movie.poster id="image" style="height:160px;float: right"/>
+      </div>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+
+  <kendo-tilelayout-item [colSpan]="3" [col]="1" [rowSpan]="4">
+    <kendo-tilelayout-item-body *ngIf="toggleGridView">
+      <kendo-grid *ngIf="episodes" [data]="episodes">
+        <kendo-grid-column field="title" title="Title"></kendo-grid-column>
+        <kendo-grid-column field="released" title="Released"></kendo-grid-column>
+        <kendo-grid-column field="episode" title="Episode"></kendo-grid-column>
+        <kendo-grid-column field="imdbRating" title="ImdbRating"></kendo-grid-column>
+      </kendo-grid>
+    </kendo-tilelayout-item-body>
+  </kendo-tilelayout-item>
+
+</kendo-tilelayout>
