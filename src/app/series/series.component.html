@@ -1,6 +1,6 @@
 <kendo-tilelayout [columns]="3">
 
-  <kendo-tilelayout-item [col]="1" [rowSpan]="1">
+  <kendo-tilelayout-item  title="Filter Series" [col]="1" [rowSpan]="1">
     <kendo-tilelayout-item-body>
       <p>
         <kendo-dropdownlist (valueChange)="handleSeriesChange($event)" [(ngModel)]="selectedTitle" [data]="categories" [defaultItem]="defaultTitleItem" textField="text" valueField="value">
@@ -13,10 +13,10 @@
     </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>
 
-  <kendo-tilelayout-item [colSpan]="2" [col]="2" [rowSpan]="1">
+  <kendo-tilelayout-item [colSpan]="2" [col]="2" [rowSpan]="1" title="Series Info">
     <kendo-tilelayout-item-body>
       <div *ngIf="movie">
-        <div style="float: left;width: 80%" w>
+        <div style="float: left;width: 60%" w>
           <h1>{{movie.title}}</h1>
           <ul>
             <li>
@@ -37,13 +37,13 @@
 
           </ul>
         </div>
-        <img [src]=movie.poster id="image" style="height:160px;float: right"/>
+        <img [src]=movie.poster id="image" style="height:200px;float: right"/>
       </div>
     </kendo-tilelayout-item-body>
   </kendo-tilelayout-item>
 
-  <kendo-tilelayout-item [colSpan]="3" [col]="1" [rowSpan]="4">
-    <kendo-tilelayout-item-body *ngIf="toggleGridView">
+  <kendo-tilelayout-item *ngIf="toggleGridView" title="Episodes" [colSpan]="3" [col]="1" [rowSpan]="4">
+    <kendo-tilelayout-item-body>
       <kendo-grid *ngIf="episodes" [data]="episodes">
         <kendo-grid-column field="title" title="Title"></kendo-grid-column>
         <kendo-grid-column field="released" title="Released"></kendo-grid-column>

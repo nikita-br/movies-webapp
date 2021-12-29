@@ -36,7 +36,13 @@ export class SeriesComponent implements OnInit {
   handleSeriesChange(value: { text: string, value: number }) {
     this.toggleGridView = false;
     let title = value.text;
-    this.getMovies(title);
+    if(value.value != 0){
+      this.getMovies(title);
+    }
+    else{
+      this.selectedSeason = {text: "", value: 0}
+      this.seasons = [];
+    }
   }
 
   handleSeasonChange(value: { text: string, value: number }) {
@@ -68,5 +74,7 @@ export class SeriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.episodes = [];
+    this.selectedTitle = this.categories[0];
+    this.getMovies(this.selectedTitle.text);
   }
 }
