@@ -60,8 +60,8 @@ export class SeriesComponent implements OnInit {
       this.episodes = [];
       this.selectedSeason = this.defaultSeasonItem;
       let numberOfSeasons = this.movie.totalSeasons;
-      for (let i = 1; i < numberOfSeasons; i++) {
-        this.seasons.push({text: "Season - " + i, value: i})
+      for (let i = 0; i < numberOfSeasons; i++) {
+        this.seasons.push({text: "Season - " + (i+1).toString(), value: i+1})
       }
     });
   }
